@@ -8,9 +8,13 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import ReactNativeBiometrics from 'react-native-biometrics';
 
 import transactions from '../../constants/transactionData.json';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../type'; 
+
 
 const rnBiometrics = new ReactNativeBiometrics();
 
@@ -18,6 +22,8 @@ const TransactionHistoryScreen: React.FC = () => {
   const [data, setData] = useState(transactions);
   const [refreshing, setRefreshing] = useState(false);
   const [showAmounts, setShowAmounts] = useState(false);
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
 
   const handleBiometricAuthentication = async () => {
     try {
@@ -44,7 +50,16 @@ const TransactionHistoryScreen: React.FC = () => {
     }, 1500);
   }, [data]);
 
+  const handleItemPress = (item: typeof transactions[0]) => {
+    navigation.navigate('Details', { transaction: item });
+  };
+
+  
+
   const renderItem = ({ item }: { item: typeof transactions[0] }) => (
+    <TouchableOpacity
+    onPress={() => handleItemPress(item)}
+  >
     <View style={styles.transactionItem}>
       <Text style={styles.description}>{item.description}</Text>
       <Text style={styles.date}>{item.date}</Text>
@@ -53,6 +68,7 @@ const TransactionHistoryScreen: React.FC = () => {
         {showAmounts ? `$${item.amount.toFixed(2)}` : '****'}
       </Text>
     </View>
+    </TouchableOpacity>
   );
 
   return (
