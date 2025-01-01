@@ -1,143 +1,282 @@
 [
-    {
-      "id": 1,
-      "amount": 100.50,
-      "date": "2024-01-01",
-      "description": "Grocery Shopping",
-      "type": "debit"
-    },
-    {
-      "id": 2,
-      "amount": 200.00,
-      "date": "2024-01-02",
-      "description": "Salary Credit",
-      "type": "credit"
-    },
-    {
-      "id": 3,
-      "amount": 25.75,
-      "date": "2024-01-03",
-      "description": "Coffee Shop",
-      "type": "debit"
-    },
-    {
-      "id": 4,
-      "amount": 150.00,
-      "date": "2024-01-04",
-      "description": "Utility Bill Payment",
-      "type": "debit"
-    },
-    {
-      "id": 5,
-      "amount": 50.00,
-      "date": "2024-01-05",
-      "description": "Gift Card Redemption",
-      "type": "credit"
-    },
-    {
-      "id": 6,
-      "amount": 75.90,
-      "date": "2024-01-06",
-      "description": "Online Subscription",
-      "type": "debit"
-    },
-    {
-      "id": 7,
-      "amount": 500.00,
-      "date": "2024-01-07",
-      "description": "Freelance Payment",
-      "type": "credit"
-    },
-    {
-      "id": 8,
-      "amount": 120.00,
-      "date": "2024-01-08",
-      "description": "Dining Out",
-      "type": "debit"
-    },
-    {
-      "id": 9,
-      "amount": 80.00,
-      "date": "2024-01-09",
-      "description": "Fitness Club Membership",
-      "type": "debit"
-    },
-    {
-      "id": 10,
-      "amount": 20.00,
-      "date": "2024-01-10",
-      "description": "Charity Donation",
-      "type": "debit"
-    },
-    {
-      "id": 11,
-      "amount": 350.00,
-      "date": "2024-01-11",
-      "description": "Monthly Savings",
-      "type": "credit"
-    },
-    {
-      "id": 12,
-      "amount": 45.30,
-      "date": "2024-01-12",
-      "description": "Cab Ride",
-      "type": "debit"
-    },
-    {
-      "id": 13,
-      "amount": 1000.00,
-      "date": "2024-01-13",
-      "description": "Business Profit Share",
-      "type": "credit"
-    },
-    {
-      "id": 14,
-      "amount": 35.70,
-      "date": "2024-01-14",
-      "description": "Bookstore Purchase",
-      "type": "debit"
-    },
-    {
-      "id": 15,
-      "amount": 200.00,
-      "date": "2024-01-15",
-      "description": "Utility Bill Payment",
-      "type": "debit"
-    },
-    {
-      "id": 16,
-      "amount": 10.00,
-      "date": "2024-01-16",
-      "description": "Parking Fee",
-      "type": "debit"
-    },
-    {
-      "id": 17,
-      "amount": 500.00,
-      "date": "2024-01-17",
-      "description": "Investment Return",
-      "type": "credit"
-    },
-    {
-      "id": 18,
-      "amount": 60.00,
-      "date": "2024-01-18",
-      "description": "Cinema Tickets",
-      "type": "debit"
-    },
-    {
-      "id": 19,
-      "amount": 85.00,
-      "date": "2024-01-19",
-      "description": "Gas Station",
-      "type": "debit"
-    },
-    {
-      "id": 20,
-      "amount": 1200.00,
-      "date": "2024-01-20",
-      "description": "Bonus Payment",
-      "type": "credit"
-    }
-  ]
-  
+  {
+    "id": "1",
+    "referenceNo": "RN210132450",
+    "status": "Success",
+    "recipient": "Anuar Zain",
+    "accNo": "0259875632",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "Maybank",
+    "amount": "100.50",
+    "date": "2024-01-01",
+    "description": "Grocery Shopping",
+    "type": "debit",
+    "fromAcc": "8888666622"
+  },
+  {
+    "id": "2",
+    "referenceNo": "RN210132451",
+    "status": "Success",
+    "recipient": "Siti Farah",
+    "accNo": "0159875634",
+    "transferMethod": "Online Banking",
+    "recipientBank": "CIMB",
+    "amount": "500.00",
+    "date": "2024-01-02",
+    "description": "Rent Payment",
+    "type": "debit",
+    "fromAcc": "8888666622"
+  },
+  {
+    "id": "3",
+    "referenceNo": "RN210132452",
+    "status": "Success",
+    "recipient": "John Tan",
+    "accNo": "0359875633",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "RHB Bank",
+    "amount": "250.00",
+    "date": "2024-01-03",
+    "description": "Loan Repayment",
+    "type": "debit",
+    "fromAcc": "8888666633"
+  },
+  {
+    "id": "4",
+    "referenceNo": "RN210132453",
+    "status": "Success",
+    "recipient": "Ahmad Zulkarnain",
+    "accNo": "0459875635",
+    "transferMethod": "Bank Transfer",
+    "recipientBank": "Public Bank",
+    "amount": "750.00",
+    "date": "2024-01-04",
+    "description": "Salary Payment",
+    "type": "credit",
+    "fromAcc": "8888666644"
+  },
+  {
+    "id": "5",
+    "referenceNo": "RN210132454",
+    "status": "Success",
+    "recipient": "Aminah Sulaiman",
+    "accNo": "0559875637",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "Maybank",
+    "amount": "200.00",
+    "date": "2024-01-05",
+    "description": "Online Shopping",
+    "type": "debit",
+    "fromAcc": "8888666622"
+  },
+  {
+    "id": "6",
+    "referenceNo": "RN210132455",
+    "status": "Success",
+    "recipient": "Syed Mustafa",
+    "accNo": "0659875639",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "RHB Bank",
+    "amount": "1000.00",
+    "date": "2024-01-06",
+    "description": "Investment in Stocks",
+    "type": "credit",
+    "fromAcc": "8888666633"
+  },
+  {
+    "id": "7",
+    "referenceNo": "RN210132456",
+    "status": "Failed",
+    "recipient": "Nabila Roslan",
+    "accNo": "0759875640",
+    "transferMethod": "Online Banking",
+    "recipientBank": "CIMB",
+    "amount": "450.00",
+    "date": "2024-01-07",
+    "description": "Car Loan Payment",
+    "type": "debit",
+    "fromAcc": "8888666644"
+  },
+  {
+    "id": "8",
+    "referenceNo": "RN210132457",
+    "status": "Success",
+    "recipient": "Sara Binti Salleh",
+    "accNo": "0859875641",
+    "transferMethod": "Bank Transfer",
+    "recipientBank": "Maybank",
+    "amount": "300.00",
+    "date": "2024-01-08",
+    "description": "Freelance Payment",
+    "type": "debit",
+    "fromAcc": "8888666633"
+  },
+  {
+    "id": "9",
+    "referenceNo": "RN210132458",
+    "status": "Success",
+    "recipient": "Kamarul Zaman",
+    "accNo": "0959875643",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "Public Bank",
+    "amount": "600.00",
+    "date": "2024-01-09",
+    "description": "Emergency Fund",
+    "type": "credit",
+    "fromAcc": "8888666644"
+  },
+  {
+    "id": "10",
+    "referenceNo": "RN210132459",
+    "status": "Success",
+    "recipient": "Zuhra Nabila",
+    "accNo": "1059875644",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "RHB Bank",
+    "amount": "120.00",
+    "date": "2024-01-10",
+    "description": "Medical Bills",
+    "type": "debit",
+    "fromAcc": "8888666622"
+  },
+  {
+    "id": "11",
+    "referenceNo": "RN210132460",
+    "status": "Success",
+    "recipient": "Aminuddin Ismail",
+    "accNo": "1159875645",
+    "transferMethod": "Bank Transfer",
+    "recipientBank": "CIMB",
+    "amount": "420.00",
+    "date": "2024-01-11",
+    "description": "Subscription Fee",
+    "type": "debit",
+    "fromAcc": "8888666633"
+  },
+  {
+    "id": "12",
+    "referenceNo": "RN210132461",
+    "status": "Success",
+    "recipient": "Nadia Rashid",
+    "accNo": "1259875647",
+    "transferMethod": "Online Banking",
+    "recipientBank": "Maybank",
+    "amount": "650.00",
+    "date": "2024-01-12",
+    "description": "Tuition Fees",
+    "type": "debit",
+    "fromAcc": "8888666644"
+  },
+  {
+    "id": "13",
+    "referenceNo": "RN210132462",
+    "status": "Success",
+    "recipient": "Shahril Mohd",
+    "accNo": "1359875649",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "Public Bank",
+    "amount": "350.00",
+    "date": "2024-01-13",
+    "description": "Utility Bill Payment",
+    "type": "debit",
+    "fromAcc": "8888666622"
+  },
+  {
+    "id": "14",
+    "referenceNo": "RN210132463",
+    "status": "Failed",
+    "recipient": "Kamal Khairul",
+    "accNo": "1459875651",
+    "transferMethod": "Online Banking",
+    "recipientBank": "RHB Bank",
+    "amount": "700.00",
+    "date": "2024-01-14",
+    "description": "Home Renovation",
+    "type": "credit",
+    "fromAcc": "8888666633"
+  },
+  {
+    "id": "15",
+    "referenceNo": "RN210132464",
+    "status": "Success",
+    "recipient": "Fathimah Jamil",
+    "accNo": "1559875652",
+    "transferMethod": "Bank Transfer",
+    "recipientBank": "CIMB",
+    "amount": "200.00",
+    "date": "2024-01-15",
+    "description": "Gift Purchase",
+    "type": "debit",
+    "fromAcc": "8888666622"
+  },
+  {
+    "id": "16",
+    "referenceNo": "RN210132465",
+    "status": "Success",
+    "recipient": "Roslan Ibrahim",
+    "accNo": "1659875653",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "Maybank",
+    "amount": "1200.00",
+    "date": "2024-01-16",
+    "description": "Investment Payment",
+    "type": "credit",
+    "fromAcc": "8888666644"
+  },
+  {
+    "id": "17",
+    "referenceNo": "RN210132466",
+    "status": "Success",
+    "recipient": "Rizwan Ali",
+    "accNo": "1759875655",
+    "transferMethod": "Bank Transfer",
+    "recipientBank": "RHB Bank",
+    "amount": "50.00",
+    "date": "2024-01-17",
+    "description": "Coffee Shop",
+    "type": "debit",
+    "fromAcc": "8888666622"
+  },
+  {
+    "id": "18",
+    "referenceNo": "RN210132467",
+    "status": "Success",
+    "recipient": "Najwa Ahmad",
+    "accNo": "1859875656",
+    "transferMethod": "Online Banking",
+    "recipientBank": "CIMB",
+    "amount": "300.00",
+    "date": "2024-01-18",
+    "description": "Home Loan Repayment",
+    "type": "debit",
+    "fromAcc": "8888666633"
+  },
+  {
+    "id": "19",
+    "referenceNo": "RN210132468",
+    "status": "Success",
+    "recipient": "Mamat Yusof",
+    "accNo": "1959875657",
+    "transferMethod": "DuitNow Transfer",
+    "recipientBank": "Public Bank",
+    "amount": "130.00",
+    "date": "2024-01-19",
+    "description": "Utility Bills",
+    "type": "debit",
+    "fromAcc": "8888666644"
+  },
+  {
+    "id": "20",
+    "referenceNo": "RN210132469",
+    "status": "Success",
+    "recipient": "Taufik Ridzwan",
+    "accNo": "2059875659",
+    "transferMethod": "Bank Transfer",
+    "recipientBank": "Maybank",
+    "amount": "500.00",
+    "date": "2024-01-20",
+    "description": "Freelance Payment",
+    "type": "credit",
+    "fromAcc": "8888666633"
+  }
+]

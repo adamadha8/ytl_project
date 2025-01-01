@@ -1,20 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
 import {
-    Alert,
-    FlatList,
-    RefreshControl,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import ReactNativeBiometrics from 'react-native-biometrics';
-
-import transactions from '../../constants/transactionData.json';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../type'; 
-
+import transactions from '../../constants/transactionData.json';
+import { RootStackParamList } from '../../type';
+import TransactionHistoryScreenComp from './component';
 
 const rnBiometrics = new ReactNativeBiometrics();
 
@@ -23,7 +16,6 @@ const TransactionHistoryScreen: React.FC = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [showAmounts, setShowAmounts] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
 
   const handleBiometricAuthentication = async () => {
     try {
@@ -45,7 +37,7 @@ const TransactionHistoryScreen: React.FC = () => {
   const handleRefresh = useCallback(() => {
     setRefreshing(true);
     setTimeout(() => {
-      setData([...data]); 
+      setData([...data]);
       setRefreshing(false);
     }, 1500);
   }, [data]);
@@ -54,94 +46,22 @@ const TransactionHistoryScreen: React.FC = () => {
     navigation.navigate('Details', { transaction: item });
   };
 
-  
+  const props = {
+    data,
+    showAmounts,
+    refreshing,
+    setData,
+    setRefreshing,
+    setShowAmounts,
+    navigation,
+    handleBiometricAuthentication,
+    handleRefresh,
+    handleItemPress
+  };
 
-  const renderItem = ({ item }: { item: typeof transactions[0] }) => (
-    <TouchableOpacity
-    onPress={() => handleItemPress(item)}
-  >
-    <View style={styles.transactionItem}>
-      <Text style={styles.description}>{item.description}</Text>
-      <Text style={styles.date}>{item.date}</Text>
-      <Text style={styles.type}>{item.type.toUpperCase()}</Text>
-      <Text style={styles.amount}>
-        {showAmounts ? `$${item.amount.toFixed(2)}` : '****'}
-      </Text>
-    </View>
-    </TouchableOpacity>
-  );
+  return <TransactionHistoryScreenComp {...props} />;
 
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.authButton} onPress={handleBiometricAuthentication}>
-        <Text style={styles.authButtonText}>Reveal Amounts</Text>
-      </TouchableOpacity>
-      <FlatList
-        data={data}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={renderItem}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
-        }
-        contentContainerStyle={styles.list}
-      />
-    </View>
-  );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#f5f5f5',
-  },
-  authButton: {
-    backgroundColor: '#6200ee',
-    padding: 10,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  authButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  list: {
-    paddingBottom: 16,
-  },
-  transactionItem: {
-    backgroundColor: '#fff',
-    padding: 16,
-    marginBottom: 12,
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 2,
-  },
-  description: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  date: {
-    fontSize: 14,
-    color: '#666',
-    marginVertical: 4,
-  },
-  type: {
-    fontSize: 14,
-    color: '#6200ee',
-    marginBottom: 4,
-    fontWeight: '500',
-  },
-  amount: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000',
-  },
-});
 
 export default TransactionHistoryScreen;
