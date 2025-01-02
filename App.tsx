@@ -15,7 +15,9 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{gestureEnabled: false}}>
           <Stack.Screen
             name="Login"
             component={LoginScreen}
