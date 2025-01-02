@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#f9f9f9',
   },
-  headerHistory: {padding: 10, paddingBottom: 20},
+  headerHistory: {marginBottom: 20},
   headerText: {fontSize: 24, fontWeight: 'bold'},
   authPinButton: {
     backgroundColor: '#03dac5',

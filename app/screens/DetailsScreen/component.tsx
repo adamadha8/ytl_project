@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import ThankYouIcon from '../../assets/give.png';
 import {DetailsScreenProps} from '../../type';
 import {styles} from './styles';
@@ -9,7 +9,7 @@ const DetailsScreenComp: React.FC<DetailsScreenProps> = ({
   navigation,
 }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.statusContainer}>
         <Text
           style={[
@@ -101,7 +101,7 @@ const DetailsScreenComp: React.FC<DetailsScreenProps> = ({
         onPress={() => navigation.goBack()}>
         <Text style={styles.doneButtonText}>Done</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 

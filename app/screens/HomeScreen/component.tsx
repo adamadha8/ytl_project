@@ -83,32 +83,39 @@ const HomeScreenComp: React.FC<HomeScreenProps> = ({
             </TouchableOpacity>
           </View>
 
-          {transactions.slice(0, 3).map((transaction, index) => (
-            <TouchableOpacity
-              key={transaction.id}
-              onPress={() => handleTransactionHistory()}>
-              <View key={index} style={styles.transactionItem}>
-                <View style={styles.transactionDetails}>
-                  <Text style={styles.transactionDescription}>
-                    {transaction.description}
+          {transactions
+            .sort(
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+            )
+            .slice(0, 3)
+            .map((transaction, index) => (
+              <TouchableOpacity
+                key={transaction.id}
+                onPress={() => handleTransactionHistory()}>
+                <View key={index} style={styles.transactionItem}>
+                  <View style={styles.transactionDetails}>
+                    <Text style={styles.transactionDescription}>
+                      {transaction.description}
+                    </Text>
+                    <Text style={styles.transactionDate}>
+                      {transaction.date}
+                    </Text>
+                  </View>
+                  <Text
+                    style={[
+                      styles.transactionAmount,
+                      {
+                        color:
+                          transaction.status === 'Success'
+                            ? '#28a745'
+                            : '#dc3545',
+                      },
+                    ]}>
+                    {transaction.status}
                   </Text>
-                  <Text style={styles.transactionDate}>{transaction.date}</Text>
                 </View>
-                <Text
-                  style={[
-                    styles.transactionAmount,
-                    {
-                      color:
-                        transaction.status === 'Success'
-                          ? '#28a745'
-                          : '#dc3545',
-                    },
-                  ]}>
-                  {transaction.status}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+              </TouchableOpacity>
+            ))}
         </View>
       </ScrollView>
     </ImageBackground>

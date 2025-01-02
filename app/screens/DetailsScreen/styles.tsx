@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   statusContainer: {
     alignItems: 'center',
     marginBottom: 20,
-    marginTop: 20,
   },
   statusText: {
     fontSize: 18,
@@ -141,6 +140,7 @@ export const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',
+    marginBottom: 20,
   },
   doneButtonText: {
     fontSize: 18,

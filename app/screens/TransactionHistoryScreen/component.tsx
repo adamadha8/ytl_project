@@ -1,6 +1,8 @@
 import React from 'react';
 import {
   FlatList,
+  KeyboardAvoidingView,
+  Platform,
   RefreshControl,
   Text,
   TextInput,
@@ -50,13 +52,17 @@ const TransactionHistoryScreenComp: React.FC<TransactionHistoryProps> = ({
   );
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.headerHistory}>
         <Text style={styles.headerText}>Transaction History</Text>
       </View>
 
       <FlatList
-        data={data}
+        data={data.sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+        )}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
@@ -98,7 +104,7 @@ const TransactionHistoryScreenComp: React.FC<TransactionHistoryProps> = ({
           </TouchableOpacity>
         </View>
       )}
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

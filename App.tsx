@@ -24,17 +24,30 @@ const App: React.FC = () => {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{headerShown: false}}
+            options={{
+              headerStyle: {
+                backgroundColor: '#8AD1E7',
+              },
+              headerBackVisible: false,
+              headerTitleAlign: 'center',
+              headerTitle: 'YTL Project',
+            }}
           />
           <Stack.Screen
             name="History"
             component={TransactionHistoryScreen}
-            options={{headerShown: false}}
+            options={{
+              headerTitleAlign: 'center',
+              headerTitle: 'Transaction History',
+            }}
           />
           <Stack.Screen
             name="Details"
             component={DetailsScreen}
-            options={{headerShown: false}}
+            options={{
+              headerTitleAlign: 'center',
+              headerTitle: 'Receipt',
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
