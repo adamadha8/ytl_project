@@ -40,7 +40,10 @@ const HomeScreen: React.FC = ({}) => {
         },
         {
           text: 'OK',
-          onPress: () => BackHandler.exitApp(), 
+          onPress: () => {
+            dispatch(logout());
+            BackHandler.exitApp(); 
+          }
         },
       ],
       { cancelable: false }

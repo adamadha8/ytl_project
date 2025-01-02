@@ -2,13 +2,13 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import alertMsg from "../../constants/errorList.json";
 import transactions from '../../constants/transactionData.json';
 import useBiometric from '../../hooks/useBiometric';
 import useConnection from '../../hooks/useConnection';
 import useSessionTimeout from '../../hooks/useSessionTimeout';
-import { RootState } from '../../redux/auth/store';
+import { logout, RootState } from '../../redux/auth/store';
 import { RootStackParamList } from '../../type';
 import TransactionHistoryScreenComp from './component';
 
@@ -23,6 +23,7 @@ const TransactionHistoryScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { biometricType, initializeBiometric, authenticate } = useBiometric();
   const isConnected = useConnection(); 
+  const dispatch = useDispatch();
   const { E0002, E0008 } = alertMsg.error
 
   useSessionTimeout();
@@ -39,9 +40,14 @@ const TransactionHistoryScreen: React.FC = () => {
     initializeBiometric();
   }, [initializeBiometric]);
 
-  const onFailure = () => {
-    navigation.navigate('Login'); 
-  }
+    const handleLogout = () => {
+      dispatch(logout());
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Login' }],
+      });
+    };
+
 
   const handleBiometricAuthentication = async () => {
     const { success } = await authenticate('Authenticate to view amounts');
@@ -61,7 +67,7 @@ const TransactionHistoryScreen: React.FC = () => {
       } else {
         setPinAttempts((prev) => prev + 1);
         if (pinAttempts >= 2) {
-          onFailure();
+          handleLogout();
         } else {
           Alert.alert(E0008.title,E0008.message);
         }      }
