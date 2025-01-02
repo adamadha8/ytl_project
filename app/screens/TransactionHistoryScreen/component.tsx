@@ -3,10 +3,11 @@ import {
   FlatList,
   RefreshControl,
   Text,
+  TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import {styles} from './styles'
+import { styles } from './styles';
 
 import transactions from '../../constants/transactionData.json';
 
@@ -18,6 +19,10 @@ const TransactionHistoryScreenComp: React.FC<{
     handleBiometricAuthentication: () => void;
     handleRefresh: () => void;
     handleItemPress: (item: any) => void;
+    isPinInputVisible: boolean;
+    enteredPin: string;
+    setEnteredPin: React.Dispatch<React.SetStateAction<string>>;
+    handlePinSubmit: () => void;
   }> = ({
     data,
     showAmounts,
@@ -25,6 +30,10 @@ const TransactionHistoryScreenComp: React.FC<{
     handleBiometricAuthentication,
     handleRefresh,
     handleItemPress,
+    isPinInputVisible,
+    enteredPin,
+    setEnteredPin,
+    handlePinSubmit
   }) => {
 
   const renderItem = ({ item }: { item: typeof transactions[0] }) => (
@@ -38,7 +47,7 @@ const TransactionHistoryScreenComp: React.FC<{
   
         <View style={styles.rightColumn}>
           <Text style={styles.amount}>
-            {showAmounts ? `$${item.amount}` : '****'}
+            {showAmounts ? `RM ${item.amount}` : '****'}
           </Text>
           <Text style={styles.metadata}>{item.date}</Text>
           <Text
@@ -58,9 +67,12 @@ const TransactionHistoryScreenComp: React.FC<{
 
   return (
     <View style={styles.container}>
+     {!showAmounts && ( 
       <TouchableOpacity style={styles.authButton} onPress={handleBiometricAuthentication}>
         <Text style={styles.authButtonText}>Reveal Amounts</Text>
       </TouchableOpacity>
+     )}
+
       <FlatList
         data={data}
         keyExtractor={(item) => item.id.toString()}
@@ -70,7 +82,36 @@ const TransactionHistoryScreenComp: React.FC<{
         }
         contentContainerStyle={styles.list}
       />
+            {isPinInputVisible && (
+        <View style={{ padding: 20 }}>
+          <TextInput
+            placeholder="Enter PIN (123456)"
+            secureTextEntry={true}
+            keyboardType="numeric"
+            value={enteredPin}
+            onChangeText={setEnteredPin}
+            onSubmitEditing={handlePinSubmit}
+            style={{
+              borderWidth: 1,
+              padding: 15,
+              marginVertical: 10,
+              borderRadius: 8,
+              borderColor: '#ccc', // light border color
+              backgroundColor: '#f9f9f9', // subtle background color
+              fontSize: 18,
+              fontWeight: '500',
+              color: '#333',
+            }}
+            placeholderTextColor="#aaa" // lighter placeholder color
+            returnKeyType="done" // changes return key to "done"
+            autoFocus={true} // optional: if you want the field focused automatically
+          />
+       
+        </View>
+      )}
     </View>
+
+    
   );
 };
 

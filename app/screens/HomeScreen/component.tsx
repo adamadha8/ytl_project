@@ -93,7 +93,7 @@ const HomeScreenComp: React.FC<HomeScreenProps> = ({handleItemPress, handleTrans
         {transactions.slice(0, 3).map((transaction, index) => (
            <TouchableOpacity
               key={transaction.id}
-              onPress={() => handleItemPress(transaction)}
+              onPress={() => handleTransactionHistory()}
             >
             <View key={index} style={styles.transactionItem}>
               <View style={styles.transactionDetails}>

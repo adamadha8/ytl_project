@@ -5,7 +5,6 @@ import { styles } from './styles';
 type LoginScreenProps = {
   handleBiometricLogin: () => void;
   handlePinLogin: () => void;
-  handleKeyboardClose: () => void;
   pinInput: string;
   setPinInput: (input: string) => void;
   biometryType: 'FaceID' | 'TouchID' | null;
@@ -14,7 +13,6 @@ type LoginScreenProps = {
 const LoginScreenComp: React.FC<LoginScreenProps> = ({
   handleBiometricLogin,
   handlePinLogin,
-  handleKeyboardClose,
   pinInput,
   setPinInput,
   biometryType,
@@ -37,7 +35,6 @@ const LoginScreenComp: React.FC<LoginScreenProps> = ({
         keyboardType="numeric"
         value={pinInput}
         onChangeText={setPinInput}
-        onFocus={handleKeyboardClose}
         placeholderTextColor="#aaa"
       />
 

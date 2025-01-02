@@ -13,8 +13,17 @@
       "message": "Authentication failed. Please try again."
     },
     "E0004": {
-      "title": "Error",
+      "title": "Unavailable Error",
       "message": "Biometric authentication not available"
+    },
+    "E0005": {
+      "title": "Fallback Error",
+      "message": "Enter your 6-digit PIN"
+    },
+    "E0006": {
+      "title": "Invalid Pin Error",
+      "message": "Invalid Pin"
     }
+    
   }
 }

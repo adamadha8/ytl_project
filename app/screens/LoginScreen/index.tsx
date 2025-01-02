@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import ReactNativeBiometrics from 'react-native-biometrics';
 import { useDispatch, useSelector } from 'react-redux';
+import alert from '../../constants/errorList.json';
 import { RootState } from '../../redux/auth/store';
 import { RootStackParamList } from '../../type';
 import LoginScreenComp from '../LoginScreen/component';
+
 
 const rnBiometrics = new ReactNativeBiometrics();
 
@@ -28,6 +30,14 @@ const LoginScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Login'>>
     });
   }, []);
 
+
+  const displayAlert = (code: keyof typeof alert.error) => {
+    const alertMessage = alert.error[code];
+    Alert.alert(alertMessage.message);
+  };
+
+
+
   const handlePinFallback = () => {
     Alert.alert('Fallback', 'Enter your 6-digit PIN');
   };
@@ -39,7 +49,7 @@ const LoginScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Login'>>
     }
 
     if (!biometryType) {
-      Alert.alert('Error', 'Biometric authentication not available');
+      displayAlert('E0004');
       handlePinFallback();
       return;
     }
@@ -52,11 +62,11 @@ const LoginScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Login'>>
       if (success) {
         navigation.navigate('Home');
       } else {
-        Alert.alert('Error', 'Biometric authentication failed');
+        displayAlert('E0003');
         handlePinFallback();
       }
     } catch (error) {
-      Alert.alert('Error', 'Biometric authentication failed');
+      displayAlert('E0003');
       handlePinFallback();
     }
   };
@@ -65,19 +75,16 @@ const LoginScreen: React.FC<NativeStackScreenProps<RootStackParamList, 'Login'>>
     if (pinInput === pin) {
       navigation.navigate('Home');
     } else {
-      Alert.alert('Error', 'Invalid PIN');
+      displayAlert('E0006');
     }
   };
 
 
-  const handleKeyboardClose = () => {
-    console.log('Keyboard closed');
-  };
+ 
 
   const props = {
     handleBiometricLogin,
     handlePinLogin,
-    handleKeyboardClose,
     pinInput,
     setPinInput,
     biometryType,
