@@ -1,32 +1,19 @@
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { LoginScreenProps } from '../../type';
 import { styles } from './styles';
 
-type LoginScreenProps = {
-  handleBiometricLogin: () => void;
-  handlePinLogin: () => void;
-  pinInput: string;
-  setPinInput: (input: string) => void;
-  biometryType: 'FaceID' | 'TouchID' | null;
-};
-
 const LoginScreenComp: React.FC<LoginScreenProps> = ({
-  handleBiometricLogin,
-  handlePinLogin,
+  handleLogin,
   pinInput,
   setPinInput,
-  biometryType,
+  biometricType,
+  isConnected
 }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Back!</Text>
       <Text style={styles.subtitle}>Please login to continue</Text>
-
-      {biometryType && (
-        <TouchableOpacity style={styles.biometricsButton} onPress={handleBiometricLogin}>
-          <Text style={styles.biometricsButtonText}>Login with {biometryType}</Text>
-        </TouchableOpacity>
-      )}
 
       <TextInput
         style={styles.input}
@@ -38,9 +25,21 @@ const LoginScreenComp: React.FC<LoginScreenProps> = ({
         placeholderTextColor="#aaa"
       />
 
-      <TouchableOpacity style={styles.pinLoginButton} onPress={handlePinLogin}>
+      <TouchableOpacity style={styles.pinLoginButton}  onPress={() => handleLogin('PIN')}>
         <Text style={styles.pinLoginButtonText}>Login with PIN</Text>
       </TouchableOpacity>
+      
+      {biometricType && (
+        <View>
+          <Text style={styles.optionLabel}>Or</Text>
+        <TouchableOpacity style={styles.biometricsButton}  onPress={() => handleLogin('Biometric')}>
+          <Text style={styles.biometricsButtonText}>Login with {biometricType}</Text>
+        </TouchableOpacity>
+
+        {!isConnected && <Text style={styles.noInternet}>No Internet Connection</Text>}
+
+        </View>
+      )}
     </View>
   );
 };

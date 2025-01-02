@@ -23,6 +23,14 @@
     "E0006": {
       "title": "Invalid Pin Error",
       "message": "Invalid Pin"
+    },
+    "E0007": {
+      "title": "Attempt Error",
+      "message": "Authentication failed. You've attempt many times."
+    },
+    "E0008": {
+      "title": "Incorrect PIN",
+      "message": "The PIN that you've entered is incorrect."
     }
     
   }

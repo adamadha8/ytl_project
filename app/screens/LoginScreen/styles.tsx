@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -45,7 +44,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 18,
     marginBottom: 30,
-    elevation: 2, // Subtle shadow effect
+    elevation: 2,
   },
   pinLoginButton: {
     backgroundColor: '#03dac5',
@@ -60,4 +59,6 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
   },
+  optionLabel:{color:'#fff', padding:10, textAlign:'center', fontWeight:'bold'},
+  noInternet:{ color: 'red', textAlign:'center' }
 });
