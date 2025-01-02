@@ -8,6 +8,7 @@ export type LoginScreenProps = {
 };
 
 export type HomeScreenProps = {
+    handleLogout: () => void;
     handleTransactionHistory: () => void;
   };
 

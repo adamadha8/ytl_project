@@ -11,7 +11,7 @@ import transactions from "../../constants/transactionData.json";
 import { HomeScreenProps } from '../../type';
 import { styles } from "./styles";
 
-const HomeScreenComp: React.FC<HomeScreenProps> = ({ handleTransactionHistory}) => {
+const HomeScreenComp: React.FC<HomeScreenProps> = ({handleLogout, handleTransactionHistory}) => {
   return (
     <ImageBackground
     source={BackgroundImg}
@@ -21,7 +21,7 @@ const HomeScreenComp: React.FC<HomeScreenProps> = ({ handleTransactionHistory}) 
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Text style={styles.appTitle}>Hello, Adam Adha!</Text>
-        <TouchableOpacity style={styles.logoutBtn}>
+        <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
             <Text style={styles.logoutText}>Logout</Text>
           </TouchableOpacity>
   

@@ -20,10 +20,14 @@ const authSlice = createSlice({
     setPin(state, action) {
       state.pin = action.payload;
     },
+    logout: (state) => {
+      state.biometricEnabled = initialState.biometricEnabled;
+      state.pin = initialState.pin;
+    },
   },
 });
 
-export const { setBiometricEnabled, setPin } = authSlice.actions;
+export const { setBiometricEnabled, setPin, logout } = authSlice.actions;
 
 const store = configureStore({
   reducer: {
