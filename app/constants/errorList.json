@@ -1,0 +1,20 @@
+{
+  "error": {
+    "E0001": {
+      "title": "Error",
+      "message": "An unknown error occurred"
+    },
+    "E0002": {
+      "title": "Network Error",
+      "message": "Please check your internet connection."
+    },
+    "E0003": {
+      "title": "Authentication Error",
+      "message": "Authentication failed. Please try again."
+    },
+    "E0004": {
+      "title": "Error",
+      "message": "Biometric authentication not available"
+    }
+  }
+}

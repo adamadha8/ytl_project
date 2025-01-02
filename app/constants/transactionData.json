@@ -30,7 +30,7 @@
   {
     "id": "3",
     "referenceNo": "RN210132452",
-    "status": "Success",
+    "status": "Failed",
     "recipient": "John Tan",
     "accNo": "0359875633",
     "transferMethod": "DuitNow Transfer",

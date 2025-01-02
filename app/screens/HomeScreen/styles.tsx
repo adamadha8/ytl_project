@@ -155,7 +155,7 @@ height:40
     color: '#868e96',
   },
   transactionAmount: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     color: '#1f4c9c',
   },
