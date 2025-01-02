@@ -1,19 +1,20 @@
-import { useCallback, useState } from 'react';
-import { Alert } from 'react-native';
+import {useCallback, useState} from 'react';
+import {Alert} from 'react-native';
 import ReactNativeBiometrics from 'react-native-biometrics';
-import alertMsg from "../constants/errorList.json";
+import alertMsg from '../constants/errorList.json';
 
 const rnBiometrics = new ReactNativeBiometrics();
 
 const useBiometric = () => {
-  const [biometricType, setBiometricType] = useState<null | 'Face' | 'Fingerprint'>(null); // Add explicit type
+  const [biometricType, setBiometricType] = useState<
+    null | 'Face' | 'Fingerprint'
+  >(null);
   const [biometricAttempts, setBiometricAttempts] = useState(0);
-  const { E0003, E0004, E0007,} = alertMsg.error;
-
+  const {E0003, E0004, E0007} = alertMsg.error;
 
   const initializeBiometric = useCallback(async () => {
     try {
-      const { available, biometryType } = await rnBiometrics.isSensorAvailable();
+      const {available, biometryType} = await rnBiometrics.isSensorAvailable();
 
       if (available && biometryType) {
         setBiometricType(biometryType === 'FaceID' ? 'Face' : 'Fingerprint');
@@ -29,28 +30,28 @@ const useBiometric = () => {
     async (promptMessage = 'Authenticate') => {
       try {
         if (!biometricType) {
-          Alert.alert(E0004.title,E0004.message);
-          return { success: false };
+          Alert.alert(E0004.title, E0004.message);
+          return {success: false};
         }
 
-        const { success } = await rnBiometrics.simplePrompt({
+        const {success} = await rnBiometrics.simplePrompt({
           promptMessage,
         });
 
         if (success) {
           setBiometricAttempts(0);
-          return { success: true };
+          return {success: true};
         } else {
-          setBiometricAttempts((prev) => prev + 1);
-          Alert.alert(E0003.title,E0003.message);
-          return { success: false };
+          setBiometricAttempts(prev => prev + 1);
+          Alert.alert(E0003.title, E0003.message);
+          return {success: false};
         }
       } catch (error) {
-        Alert.alert(E0007.title,E0007.message);
-        return { success: false };
+        Alert.alert(E0007.title, E0007.message);
+        return {success: false};
       }
     },
-    [biometricType]
+    [biometricType],
   );
 
   return {

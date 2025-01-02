@@ -1,11 +1,10 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     width: '100%',
     height: '100%',
-    
   },
   container: {
     flexGrow: 1,
@@ -17,15 +16,14 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  promoFlex:
-  {flexDirection:'column'},
+  promoFlex: {flexDirection: 'column'},
   appTitle: {
-    flex:1,
+    flex: 1,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#002f56',
     textShadowColor: 'white',
-    textShadowOffset: { width: 1, height: 1 },
+    textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 2,
   },
   profileContainer: {
@@ -43,10 +41,10 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  awardImage:{
-    marginRight:10,
-width:40,
-height:40
+  awardImage: {
+    marginRight: 10,
+    width: 40,
+    height: 40,
   },
   balanceSection: {
     alignItems: 'flex-start',
@@ -62,7 +60,7 @@ height:40
     fontWeight: 'bold',
     color: '#002f56',
     textShadowColor: 'white',
-    textShadowOffset: { width: 1, height: 1 },
+    textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 2,
   },
   actionsSection: {
@@ -81,12 +79,12 @@ height:40
   actionButtonText: {
     color: '#495057',
     fontSize: 12,
-    marginTop:5,
+    marginTop: 5,
     fontWeight: 'bold',
   },
   promoSection: {
-    alignItems:'center',
-    flexDirection:'row',
+    alignItems: 'center',
+    flexDirection: 'row',
     backgroundColor: '#d4edda',
     padding: 16,
     borderRadius: 8,
@@ -116,7 +114,7 @@ height:40
     fontWeight: 'bold',
     color: '#002f56',
     textShadowColor: 'white',
-    textShadowOffset: { width: 1, height: 1 },
+    textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 2,
   },
   viewAllText: {
@@ -133,7 +131,7 @@ height:40
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   transactionIcon: {
     width: 40,
@@ -159,8 +157,12 @@ height:40
     fontWeight: 'bold',
     color: '#1f4c9c',
   },
-  logoutBtn : 
-  {backgroundColor:'#6200ee', alignItems:'flex-end' , marginRight:10, padding:8, borderRadius:10},
-  logoutText:
-  {color:'#fff', fontSize:12}
+  logoutBtn: {
+    backgroundColor: '#6200ee',
+    alignItems: 'flex-end',
+    marginRight: 10,
+    padding: 8,
+    borderRadius: 10,
+  },
+  logoutText: {color: '#fff', fontSize: 12},
 });

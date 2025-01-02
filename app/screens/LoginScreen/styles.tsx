@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 40,
     borderRadius: 50,
     marginBottom: 20,
-    elevation: 5, 
+    elevation: 5,
     alignItems: 'center',
   },
   biometricsButtonText: {
@@ -59,6 +59,11 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
   },
-  optionLabel:{color:'#fff', padding:10, textAlign:'center', fontWeight:'bold'},
-  noInternet:{ color: 'red', textAlign:'center' }
+  optionLabel: {
+    color: '#fff',
+    padding: 10,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  noInternet: {color: 'red', textAlign: 'center'},
 });

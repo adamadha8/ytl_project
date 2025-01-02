@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import {configureStore, createSlice} from '@reduxjs/toolkit';
 
 interface AuthState {
   biometricEnabled: boolean;
@@ -20,14 +20,14 @@ const authSlice = createSlice({
     setPin(state, action) {
       state.pin = action.payload;
     },
-    logout: (state) => {
+    logout: state => {
       state.biometricEnabled = initialState.biometricEnabled;
       state.pin = initialState.pin;
     },
   },
 });
 
-export const { setBiometricEnabled, setPin, logout } = authSlice.actions;
+export const {setBiometricEnabled, setPin, logout} = authSlice.actions;
 
 const store = configureStore({
   reducer: {

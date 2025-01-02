@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -6,9 +6,8 @@ export const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#f9f9f9',
   },
-  headerHistory:{padding:10, paddingBottom:20},
-  headerText:
-  {fontSize:24, fontWeight:'bold'},
+  headerHistory: {padding: 10, paddingBottom: 20},
+  headerText: {fontSize: 24, fontWeight: 'bold'},
   authPinButton: {
     backgroundColor: '#03dac5',
     padding: 12,
@@ -32,7 +31,7 @@ export const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   transactionItem: {
-        flexDirection: 'row',
+    flexDirection: 'row',
 
     backgroundColor: '#fff',
     padding: 16,
@@ -41,7 +40,7 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   row: {
     flexDirection: 'row',
@@ -72,22 +71,23 @@ export const styles = StyleSheet.create({
     color: '#666',
   },
   leftColumn: {
-    flex: 1, // This will take up remaining space in the row
+    flex: 1,
     justifyContent: 'flex-start',
   },
   rightColumn: {
     alignItems: 'flex-end',
     justifyContent: 'center',
   },
- pinVisible:{
-               borderWidth: 1,
-               padding: 15,
-               marginVertical: 10,
-               borderRadius: 8,
-               borderColor: '#ccc', // light border color
-               backgroundColor: '#f9f9f9', // subtle background color
-               fontSize: 18,
-               fontWeight: '500',
-               color: '#333',
-             }
+  pinVisible: {
+    borderWidth: 1,
+    padding: 15,
+    marginVertical: 10,
+    borderRadius: 8,
+    borderColor: '#ccc',
+    backgroundColor: '#f9f9f9',
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#333',
+  },
+  paddingInput: {paddingVertical: 30},
 });

@@ -5,26 +5,25 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import transactions from '../../constants/transactionData.json';
-import { TransactionHistoryProps } from '../../type';
-import { styles } from './styles';
+import {TransactionHistoryProps} from '../../type';
+import {styles} from './styles';
 
 const TransactionHistoryScreenComp: React.FC<TransactionHistoryProps> = ({
-    handleLogin,
-    data,
-    showAmounts,
-    refreshing,
-    handleRefresh,
-    handleItemPress,
-    isPinInputVisible,
-    pinInput,
-    setPinInput,
-    handlePinLogin
-  }) => {
-
-  const renderItem = ({ item }: { item: typeof transactions[0] }) => (
+  handleLogin,
+  data,
+  showAmounts,
+  refreshing,
+  handleRefresh,
+  handleItemPress,
+  isPinInputVisible,
+  pinInput,
+  setPinInput,
+  handlePinLogin,
+}) => {
+  const renderItem = ({item}: {item: (typeof transactions)[0]}) => (
     <TouchableOpacity onPress={() => handleItemPress(item)}>
       <View style={styles.transactionItem}>
         <View style={styles.leftColumn}>
@@ -32,7 +31,7 @@ const TransactionHistoryScreenComp: React.FC<TransactionHistoryProps> = ({
           <Text style={styles.description}>{item.description}</Text>
           <Text style={styles.metadata}>{item.referenceNo}</Text>
         </View>
-  
+
         <View style={styles.rightColumn}>
           <Text style={styles.amount}>
             {showAmounts ? `RM ${item.amount}` : '****'}
@@ -41,28 +40,24 @@ const TransactionHistoryScreenComp: React.FC<TransactionHistoryProps> = ({
           <Text
             style={[
               styles.status,
-              { color: item.status === 'Success' ? '#4CAF50' : '#F44336' },
-            ]}
-          >
+              {color: item.status === 'Success' ? '#4CAF50' : '#F44336'},
+            ]}>
             {item.status}
           </Text>
         </View>
       </View>
     </TouchableOpacity>
   );
-  
 
   return (
     <View style={styles.container}>
-
       <View style={styles.headerHistory}>
-      <Text style={styles.headerText}>Transaction History</Text>
+        <Text style={styles.headerText}>Transaction History</Text>
       </View>
-
 
       <FlatList
         data={data}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
@@ -70,8 +65,8 @@ const TransactionHistoryScreenComp: React.FC<TransactionHistoryProps> = ({
         contentContainerStyle={styles.list}
       />
 
-{isPinInputVisible && (
-        <View style={{ paddingVertical:30 }}>
+      {isPinInputVisible && (
+        <View style={styles.paddingInput}>
           <TextInput
             placeholder="Enter PIN (123456)"
             secureTextEntry={true}
@@ -84,27 +79,26 @@ const TransactionHistoryScreenComp: React.FC<TransactionHistoryProps> = ({
             returnKeyType="done"
             autoFocus={true}
           />
-       
         </View>
       )}
-     {!showAmounts && ( 
-      <View>
-        {isPinInputVisible && (
-      <TouchableOpacity style={styles.authPinButton} onPress={()=>handleLogin('PIN')}>
-        <Text style={styles.authButtonText}>Authenticate (PIN)</Text>
-      </TouchableOpacity>
-        )}
-           <TouchableOpacity style={styles.authButton} onPress={()=>handleLogin('Biometric')}>
-           <Text style={styles.authButtonText}>Authenticate (Biometric)</Text>
-         </TouchableOpacity>
-         </View>
-     )}
-        
+      {!showAmounts && (
+        <View>
+          {isPinInputVisible && (
+            <TouchableOpacity
+              style={styles.authPinButton}
+              onPress={() => handleLogin('PIN')}>
+              <Text style={styles.authButtonText}>Authenticate (PIN)</Text>
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity
+            style={styles.authButton}
+            onPress={() => handleLogin('Biometric')}>
+            <Text style={styles.authButtonText}>Authenticate (Biometric)</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
-
-    
   );
 };
-
 
 export default TransactionHistoryScreenComp;
