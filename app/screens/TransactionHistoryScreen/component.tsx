@@ -7,33 +7,21 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import transactions from '../../constants/transactionData.json';
+import { TransactionHistoryProps } from '../../type';
 import { styles } from './styles';
 
-import transactions from '../../constants/transactionData.json';
-
-
-const TransactionHistoryScreenComp: React.FC<{
-    data: any[];
-    showAmounts: boolean;
-    refreshing: boolean;
-    handleBiometricAuthentication: () => void;
-    handleRefresh: () => void;
-    handleItemPress: (item: any) => void;
-    isPinInputVisible: boolean;
-    enteredPin: string;
-    setEnteredPin: React.Dispatch<React.SetStateAction<string>>;
-    handlePinSubmit: () => void;
-  }> = ({
+const TransactionHistoryScreenComp: React.FC<TransactionHistoryProps> = ({
+    handleLogin,
     data,
     showAmounts,
     refreshing,
-    handleBiometricAuthentication,
     handleRefresh,
     handleItemPress,
     isPinInputVisible,
-    enteredPin,
-    setEnteredPin,
-    handlePinSubmit
+    pinInput,
+    setPinInput,
+    handlePinLogin
   }) => {
 
   const renderItem = ({ item }: { item: typeof transactions[0] }) => (
@@ -64,14 +52,13 @@ const TransactionHistoryScreenComp: React.FC<{
   );
   
 
-
   return (
     <View style={styles.container}>
-     {!showAmounts && ( 
-      <TouchableOpacity style={styles.authButton} onPress={handleBiometricAuthentication}>
-        <Text style={styles.authButtonText}>Reveal Amounts</Text>
-      </TouchableOpacity>
-     )}
+
+      <View style={styles.headerHistory}>
+      <Text style={styles.headerText}>Transaction History</Text>
+      </View>
+
 
       <FlatList
         data={data}
@@ -82,33 +69,37 @@ const TransactionHistoryScreenComp: React.FC<{
         }
         contentContainerStyle={styles.list}
       />
-            {isPinInputVisible && (
-        <View style={{ padding: 20 }}>
+
+{isPinInputVisible && (
+        <View style={{ paddingVertical:30 }}>
           <TextInput
             placeholder="Enter PIN (123456)"
             secureTextEntry={true}
             keyboardType="numeric"
-            value={enteredPin}
-            onChangeText={setEnteredPin}
-            onSubmitEditing={handlePinSubmit}
-            style={{
-              borderWidth: 1,
-              padding: 15,
-              marginVertical: 10,
-              borderRadius: 8,
-              borderColor: '#ccc', // light border color
-              backgroundColor: '#f9f9f9', // subtle background color
-              fontSize: 18,
-              fontWeight: '500',
-              color: '#333',
-            }}
-            placeholderTextColor="#aaa" // lighter placeholder color
-            returnKeyType="done" // changes return key to "done"
-            autoFocus={true} // optional: if you want the field focused automatically
+            value={pinInput}
+            onChangeText={setPinInput}
+            onSubmitEditing={handlePinLogin}
+            style={styles.pinVisible}
+            placeholderTextColor="#aaa"
+            returnKeyType="done"
+            autoFocus={true}
           />
        
         </View>
       )}
+     {!showAmounts && ( 
+      <View>
+        {isPinInputVisible && (
+      <TouchableOpacity style={styles.authPinButton} onPress={()=>handleLogin('PIN')}>
+        <Text style={styles.authButtonText}>Authenticate (PIN)</Text>
+      </TouchableOpacity>
+        )}
+           <TouchableOpacity style={styles.authButton} onPress={()=>handleLogin('Biometric')}>
+           <Text style={styles.authButtonText}>Authenticate (Biometric)</Text>
+         </TouchableOpacity>
+         </View>
+     )}
+        
     </View>
 
     

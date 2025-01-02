@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
   promoFlex:
   {flexDirection:'column'},
   appTitle: {
+    flex:1,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#002f56',
@@ -133,7 +134,6 @@ height:40
     shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
-    elevation: 2,
   },
   transactionIcon: {
     width: 40,
@@ -159,4 +159,8 @@ height:40
     fontWeight: 'bold',
     color: '#1f4c9c',
   },
+  logoutBtn : 
+  {backgroundColor:'#6200ee', alignItems:'flex-end' , marginRight:10, padding:8, borderRadius:10},
+  logoutText:
+  {color:'#fff', fontSize:12}
 });

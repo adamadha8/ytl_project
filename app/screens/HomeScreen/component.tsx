@@ -8,14 +8,10 @@ import ProfilePic from "../../assets/profilepics.png";
 import SendMoney from '../../assets/send.png';
 import Withdraw from "../../assets/withdrawal.png";
 import transactions from "../../constants/transactionData.json";
+import { HomeScreenProps } from '../../type';
 import { styles } from "./styles";
 
-type HomeScreenProps = {
-    handleItemPress: (transaction: typeof transactions[0]) => void;
-    handleTransactionHistory: () => void;
-  };
-  
-const HomeScreenComp: React.FC<HomeScreenProps> = ({handleItemPress, handleTransactionHistory}) => {
+const HomeScreenComp: React.FC<HomeScreenProps> = ({ handleTransactionHistory}) => {
   return (
     <ImageBackground
     source={BackgroundImg}
@@ -25,12 +21,18 @@ const HomeScreenComp: React.FC<HomeScreenProps> = ({handleItemPress, handleTrans
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Text style={styles.appTitle}>Hello, Adam Adha!</Text>
+        <TouchableOpacity style={styles.logoutBtn}>
+            <Text style={styles.logoutText}>Logout</Text>
+          </TouchableOpacity>
+  
         <View style={styles.profileContainer}>
+
           <Image
           source={ProfilePic}
             style={styles.profileImage2}
           />
         </View>
+        
       </View>
 
       <View style={styles.balanceSection}>

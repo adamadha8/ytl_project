@@ -31,6 +31,10 @@
     "E0008": {
       "title": "Incorrect PIN",
       "message": "The PIN that you've entered is incorrect."
+    },
+    "E0009": {
+      "title" : "No Internet",
+      "message" : "You need an internet connection for some features"
     }
     
   }

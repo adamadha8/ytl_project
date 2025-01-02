@@ -1,55 +1,31 @@
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
-import alert from '../../constants/errorList.json';
+import { useSelector } from 'react-redux';
+import alertMsg from "../../constants/errorList.json";
 import transactions from '../../constants/transactionData.json';
-import useSessionTimeout from '../../hooks/useSessionTimeout';
 import useBiometric from '../../hooks/useBiometric';
+import useConnection from '../../hooks/useConnection';
+import useSessionTimeout from '../../hooks/useSessionTimeout';
+import { RootState } from '../../redux/auth/store';
 import { RootStackParamList } from '../../type';
 import TransactionHistoryScreenComp from './component';
 
 const TransactionHistoryScreen: React.FC = () => {
+  const { biometricEnabled, pin } = useSelector((state: RootState) => state.auth);
   const [data, setData] = useState(transactions);
   const [refreshing, setRefreshing] = useState(false);
   const [showAmounts, setShowAmounts] = useState(false);
   const [pinAttempts, setPinAttempts] = useState(0);
   const [isPinInputVisible, setIsPinInputVisible] = useState(false);
-  const [enteredPin, setEnteredPin] = useState('');
+  const [pinInput, setPinInput] = useState('');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { biometricType, initializeBiometric, authenticate } = useBiometric();
+  const isConnected = useConnection(); 
+  const { E0002, E0008 } = alertMsg.error
 
   useSessionTimeout();
-
-  useEffect(() => {
-    initializeBiometric();
-  }, [initializeBiometric]);
-
-  const handleBiometricAuthentication = async () => {
-    const { success } = await authenticate('Authenticate to view amounts');
-    if (success) {
-      setShowAmounts(true);
-    } else {
-      setIsPinInputVisible(true);
-    }
-  };
-
-  const handlePinSubmit = () => {
-    const correctPin = '123456'; // Replace with a secure PIN validation logic
-
-    if (enteredPin === correctPin) {
-      setShowAmounts(true);
-      setPinAttempts(0); // Reset attempts on success
-      setIsPinInputVisible(false);
-    } else {
-      setPinAttempts((prev) => prev + 1);
-      if (pinAttempts >= 2) {
-        navigation.navigate('Login'); 
-      } else {
-        Alert.alert('Incorrect PIN. Please try again.');
-      }
-    }
-  };
 
   const handleRefresh = useCallback(() => {
     setRefreshing(true);
@@ -58,6 +34,51 @@ const TransactionHistoryScreen: React.FC = () => {
       setRefreshing(false);
     }, 1500);
   }, [data]);
+
+  useEffect(() => {
+    initializeBiometric();
+  }, [initializeBiometric]);
+
+  const onFailure = () => {
+    navigation.navigate('Login'); 
+  }
+
+  const handleBiometricAuthentication = async () => {
+    const { success } = await authenticate('Authenticate to view amounts');
+    if (success) {
+      setShowAmounts(true);
+      setIsPinInputVisible(false);
+    } else {
+      setIsPinInputVisible(true);
+    }
+  };
+
+    const handlePinLogin = () => {
+      if (pinInput === pin) {
+        setShowAmounts(true);
+        setPinAttempts(0); 
+        setIsPinInputVisible(false);
+      } else {
+        setPinAttempts((prev) => prev + 1);
+        if (pinAttempts >= 2) {
+          onFailure();
+        } else {
+          Alert.alert(E0008.title,E0008.message);
+        }      }
+    };
+  
+    const handleLogin = async (type: 'PIN' | 'Biometric') => {
+      if (!isConnected) {
+        Alert.alert(E0002.title,E0002.message);
+        return;
+      }
+    
+      if (type === 'PIN') {
+        handlePinLogin();
+      } else if (type === 'Biometric') {
+        handleBiometricAuthentication();
+      }
+    };
 
   const handleItemPress = (item: typeof transactions[0]) => {
     if (!showAmounts) {
@@ -68,6 +89,7 @@ const TransactionHistoryScreen: React.FC = () => {
   };
 
   const props = {
+    handleLogin,
     data,
     showAmounts,
     refreshing,
@@ -75,10 +97,10 @@ const TransactionHistoryScreen: React.FC = () => {
     handleRefresh,
     handleItemPress,
     isPinInputVisible,
-    enteredPin,
-    setEnteredPin,
-    handlePinSubmit,
+    pinInput,
+    setPinInput,
     biometricType,
+    handlePinLogin
   };
 
   return <TransactionHistoryScreenComp {...props} />;

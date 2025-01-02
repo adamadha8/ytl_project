@@ -6,8 +6,18 @@ export const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#f9f9f9',
   },
+  headerHistory:{padding:10, paddingBottom:20},
+  headerText:
+  {fontSize:24, fontWeight:'bold'},
+  authPinButton: {
+    backgroundColor: '#03dac5',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 16,
+  },
   authButton: {
-    backgroundColor: '#6c63ff',
+    backgroundColor: '#6200ee',
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',
@@ -32,7 +42,6 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
-    elevation: 2,
   },
   row: {
     flexDirection: 'row',
@@ -70,5 +79,15 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'center',
   },
-
+ pinVisible:{
+               borderWidth: 1,
+               padding: 15,
+               marginVertical: 10,
+               borderRadius: 8,
+               borderColor: '#ccc', // light border color
+               backgroundColor: '#f9f9f9', // subtle background color
+               fontSize: 18,
+               fontWeight: '500',
+               color: '#333',
+             }
 });

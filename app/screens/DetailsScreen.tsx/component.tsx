@@ -2,13 +2,7 @@ import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import ThankYouIcon from '../../assets/give.png';
 import { styles } from './styles';
-
-type DetailsScreenProps = {
-    transaction: {
-        id: string;recipient: string; amount: string; date: string; description: string; type: string; fromAcc: string; recipientBank: string; transferMethod:string; accNo: string; status:string; referenceNo: string;}
-  navigation: any;
-};
-
+import { DetailsScreenProps } from '../../type';
 
 const DetailsScreenComp: React.FC<DetailsScreenProps> = ({ transaction, navigation }) => {
 
@@ -27,8 +21,7 @@ const DetailsScreenComp: React.FC<DetailsScreenProps> = ({ transaction, navigati
 </Text>
         <Text style={styles.amount}>RM{transaction.amount}</Text>
       </View>
-
-
+      
 <View style={styles.recipientInfo}>        
   <Text style={styles.merchant}>{transaction.recipient}</Text>
       <View style={styles.transactionSummary}>
