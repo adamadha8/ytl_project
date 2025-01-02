@@ -8,7 +8,7 @@ import HomeScreen from './app/screens/HomeScreen';
 import LoginScreen from './app/screens/LoginScreen';
 import { RootStackParamList } from './app/type';
 import TransactionHistoryScreen from './app/screens/TransactionHistoryScreen';
-import DetailsScreen from './app/screens/DetailsScreen.tsx';
+import DetailsScreen from './app/screens/DetailsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
