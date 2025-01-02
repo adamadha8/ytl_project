@@ -26,11 +26,11 @@
     },
     "E0007": {
       "title": "Attempt Error",
-      "message": "Authentication failed. You've attempt many times."
+      "message": "You've attempt many times. Please proceed with PIN login."
     },
     "E0008": {
       "title": "Incorrect PIN",
-      "message": "The PIN that you've entered is incorrect."
+      "message": "The PIN you entered is incorrect."
     },
     "E0009": {
       "title" : "No Internet",
